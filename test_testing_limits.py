@@ -1,6 +1,6 @@
 import unittest
 
-from testing_limits import multiple_currency_usd, multiple_currency_euro, amt_no_chars, amt_not_valid, euro_currency, usd_currency
+from testing_limits import multiple_currency_usd, multiple_currency_euro, euro_currency, usd_currency
 
 class SingleEuroTestCase(unittest.TestCase):
 
@@ -22,11 +22,17 @@ class SingleEuroTestCase(unittest.TestCase):
     def usd_test_currency_amount_is_negative(self):
         self.assertEqual(euro_currency(-1), -.9)
 
-    def test_if_not_an_integer(self):
-        self.assertEqual(amt_not_valid("a"), "That's not a valid currency amount")
+    def euro_test_if_not_an_integer(self):
+        self.assertEqual(euro_currency("a"), "That's not a valid currency amount")
 
-    def test_if_amount_has_any_characters(self):
-        self.assertEqual(amt_no_chars(""), "That's not a valid currency amount")
+    def euro_test_if_amount_has_any_characters(self):
+        self.assertEqual(euro_currency(""), "That's not a valid currency amount")
+
+    def usd_test_if_not_an_integer(self):
+        self.assertEqual(usd_currency("a"), "That's not a valid currency amount")
+
+    def usd_test_if_amount_has_any_characters(self):
+        self.assertEqual(usd_currency(""), "That's not a valid currency amount")
 
 class MultipleEuroTestCase(unittest.TestCase):
 
