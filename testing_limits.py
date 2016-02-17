@@ -25,9 +25,15 @@ def usd_currency(amount):
 
 
 def multiple_currency_euro(euro_list):
-    return [round((amount * .9), 2) for amount in euro_list]
+    try:
+        return [round((amount * .9), 2) for amount in euro_list]
+    except TypeError:
+        return "That's not a valid currency amount"
 
 
 def multiple_currency_usd(usd_list):
-    return [round((amount / .9), 2) for amount in usd_list]
-
+    try:
+        return [round((amount / .9), 2) for amount in usd_list]
+    except TypeError:
+        return "That's not a valid currency amount"
+    

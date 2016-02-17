@@ -2,6 +2,7 @@ import unittest
 
 from testing_limits import multiple_currency_usd, multiple_currency_euro, euro_currency, usd_currency
 
+
 class SingleEuroTestCase(unittest.TestCase):
 
     def test_currency_changes_for_one_number_to_euro(self):
@@ -34,6 +35,7 @@ class SingleEuroTestCase(unittest.TestCase):
     def usd_test_if_amount_has_any_characters(self):
         self.assertEqual(usd_currency(""), "That's not a valid currency amount")
 
+
 class MultipleEuroTestCase(unittest.TestCase):
 
     def test_currency_changes_for_several_numbers_returns_list_in_euros(self):
@@ -47,3 +49,10 @@ class MultipleEuroTestCase(unittest.TestCase):
 
     def test_currency_changes_for_several_numbers_returns_list_in_usd_with_decimals(self):
         self.assertEqual(multiple_currency_usd([5.46, 10.23]), [6.07, 11.37])
+
+    def euro_test_currency_changes_for_several_numbers_with_letters(self):
+        self.assertEqual(multiple_currency_euro([1, 2, "a"]), "That's not a valid currency amount")
+
+    def usd_test_currency_changes_for_several_numbers_with_letters(self):
+        self.assertEqual(multiple_currency_usd([1, 2, "a"]), "That's not a valid currency amount")
+
